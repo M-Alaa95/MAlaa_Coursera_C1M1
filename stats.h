@@ -272,13 +272,12 @@ void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorte
  *  -----------------------------------------------------
  *  Description :
  *  =============
- *  This function swaps the index of two numbers in an array
+ *  This function swaps the index of two consecutive numbers in an array
  *
  *  Input :
  *  =======
- *  - unsigned char* 'element_1' : first element
- *  - unsigned char* 'element_2' : second element
- *
+ *  - unsigned char* 'arr_to_be_sorted' : first element
+ *  - int 'target_index' : target_index
  *
  *************************************************/
 void swap_two_elements( unsigned char* arr_to_be_sorted , int target_index );

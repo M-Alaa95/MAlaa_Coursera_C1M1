@@ -296,12 +296,12 @@ int find_mean(  unsigned char* ptr_arr , int length ){
  *  -----------------------------------------------------
  *  Description :
  *  =============
- *  This function swaps the index of two numbers in an array
+ *  This function swaps the index of two consecutive numbers in an array
  *
  *  Input :
  *  =======
- *  - unsigned char* 'element_1' : first element
- *  - unsigned char* 'element_2' : second element
+ *  - unsigned char* 'arr_to_be_sorted' : first element
+ *  - int 'target_index' : target_index
  *
  *
  *************************************************/
