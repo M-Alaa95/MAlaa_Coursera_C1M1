@@ -13,7 +13,13 @@
  * @file <stats.c>
  * @brief <Add Brief Description Here >
  *
- * <This file >
+ * <
+ *   This program consists of a couple of functions that can analyze an array of unsigned char data
+ *   items and report analytics on the == maximum == , == minimum == , == mean == , and == median ==
+ *   of the data set. In addition, you will need to reorder this data set from large to small. All
+ *   statistics should be rounded down to the nearest integer. After analysis and sorting is done, you
+ *   will need to print that data to the screen in nicely formatted presentation.
+ * >
  *
  * @author <Muhammad Alaa>
  * @date <6.11.2020>
@@ -37,7 +43,20 @@ void main() {
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
   /* Other Variable Declarations Go Here */
+  int i,j;  // initiating these two variables to act as counters in the for loops used
+
+
   /* Statistics and Printing Functions Go Here */
+  //presenting the number set provided:
+  //===================================
+  print_array( int* ptr_arr , int length );
+
+
+  //showing the results of the analysis for this number set provided :
+  //===================================================================
+  print_statistics(int* ptr_arr);
+
+
 
 }
 
@@ -52,9 +71,16 @@ void main() {
  *  ============
  *  This function simply prints the calculated statistics to the command line
  ********************************************************/
- void print_statistics(void){
+ void print_statistics(int* ptr_arr){
      /* Function implementation */
 
+     //showing the results of the analysis for this number set provided :
+     //===================================================================
+     printf("\n\n");
+     printf("The maximum value of this set is : %d\n\n", find_maximum( int* ptr_arr , int length ) );
+     printf("The minimum value of this set is : %d\n\n", find_minimum( int* ptr_arr , int length ) );
+     printf("The mean value of this set is : %d\n\n", find_mean( int* ptr_arr , int length ) );
+     printf("The median value of this set is : %d\n\n", find_median( int* ptr_arr , int length ) );
 
  }
 
@@ -74,7 +100,15 @@ void main() {
  *********************************************************/
  void print_array( int* ptr_arr , int length ){
               /* Function implementation */
-
+   //presenting the number set provided:
+   //===================================
+     printf("The input array of 40 integers is as follows : ");
+     for( i = 0 ; i < 40 ; i++ ){
+         printf("\n");
+         for( j = 0 ; j < 5 ; j++ ){
+                printf("%d ", ptr_arr[i]);
+         }
+     }
 
  }
 
@@ -190,7 +224,15 @@ void main() {
  *************************************************/
 int* sort_array( int* ptr_arr , int length ){
                /* Function implementation */
-
+    //presenting the number set after sorting from the greatest to the smallest value:
+    //=================================================================================
+    printf("The array after sorting from the greatest element to the smallest will be as follows : ");
+    for( i = 0 ; i < 40 ; i++ ){
+        printf("\n");
+        for( j = 0 ; j < 5 ; j++ ){
+        printf("%d ", ptr_arr[i]);
+        }
+    }
 }
 
 
