@@ -36,6 +36,8 @@
 
 void main() {
 
+// The provided set of numbers to calculate the statics needed for this set provided by an array of unsigned chars :
+//==================================================================================================================
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                               114, 88,   45,  76, 123,  87,  25,  23,
                               200, 122, 150, 90,   92,  87, 177, 244,
@@ -49,12 +51,16 @@ void main() {
   /* Statistics and Printing Functions Go Here */
   //presenting the number set provided:
   //===================================
-  print_array( int* ptr_arr , int length );
+  print_array( test , SIZE );
 
 
   //showing the results of the analysis for this number set provided :
   //===================================================================
-  print_statistics(int* ptr_arr);
+  print_statistics( test , SIZE );
+
+  // Presenting the number set provided after sorting :
+  //===================================================================
+  sort_array(  test , SIZE );
 
 
 
@@ -69,18 +75,23 @@ void main() {
  * -----------------------------------------------------
  *  Description:
  *  ============
- *  This function simply prints the calculated statistics to the command line
+ *  This function simply prints the calculated statistics to the command line of a given array of unsigned chars
+ *
+ *  Inputs:
+ *  =======
+ * - unsigned char* 'ptr_arr' : pointer to array
+ * - int 'length' : length of the array provided
  ********************************************************/
- void print_statistics(int* ptr_arr){
+ void print_statistics( unsigned char* ptr_arr , int length ){
      /* Function implementation */
 
      //showing the results of the analysis for this number set provided :
      //===================================================================
      printf("\n\n");
-     printf("The maximum value of this set is : %d\n\n", find_maximum( int* ptr_arr , int length ) );
-     printf("The minimum value of this set is : %d\n\n", find_minimum( int* ptr_arr , int length ) );
-     printf("The mean value of this set is : %d\n\n", find_mean( int* ptr_arr , int length ) );
-     printf("The median value of this set is : %d\n\n", find_median( int* ptr_arr , int length ) );
+     printf("The maximum value of this set is : %d\n\n", find_maximum( ptr_arr , SIZE ) );
+     printf("The minimum value of this set is : %d\n\n", find_minimum( ptr_arr , SIZE ) );
+     printf("The mean value of this set is : %d\n\n", find_mean(  ptr_arr , SIZE ) );
+     printf("The median value of this set is : %d\n\n", find_median(  ptr_arr , SIZE ) );
 
  }
 
@@ -95,20 +106,21 @@ void main() {
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int  'length'  : length of the array
  *********************************************************/
- void print_array( int* ptr_arr , int length ){
+ void print_array( unsigned char* ptr_arr , int length ){
               /* Function implementation */
    //presenting the number set provided:
    //===================================
-     printf("The input array of 40 integers is as follows : ");
-     for( i = 0 ; i < 40 ; i++ ){
-         printf("\n");
-         for( j = 0 ; j < 5 ; j++ ){
-                printf("%d ", ptr_arr[i]);
-         }
-     }
+   int i , j ; //
+   printf("The input array of 40 integers is as follows : ");
+   for( i = 0 ; i < SIZE ; i+=5 ){
+        printf("\n");
+        for( j = 0 ; j < 5 ; j++ ){
+                printf("%d \t ", ptr_arr[i+j]);
+        }
+   }
 
  }
 
@@ -121,7 +133,7 @@ void main() {
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int 'length'  : length of the array
  *
  *  Return:
@@ -129,7 +141,7 @@ void main() {
  *  - int 'median' : the value of the calculated median
  **********************************************************/
 
- int find_median( int* ptr_arr , int length ){
+ int find_median(  unsigned char* ptr_arr , int length ){
         /* Function implementation */
 
 
@@ -146,14 +158,14 @@ void main() {
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int 'length'   : length of the array
  *
  *  Return :
  *  ==========
  *  - int 'mean' : the value of the calculated mean
  ************************************************************/
- int find_mean( int* ptr_arr , int length ){
+ int find_mean(  unsigned char* ptr_arr , int length ){
            /* Function implementation */
 
 
@@ -168,14 +180,14 @@ void main() {
  *
  *  Input :
  *  =======
- *  - int* 'ptr_length' : pointer to array
+ *  -  unsigned char* 'ptr_length' : pointer to array
  *  - int 'length'      : length of the array
  *
  *  Return:
  *  =======
  *  - int 'maximum' : the maximum value found within  the array of integers provided
  ******************************************************************/
-  int find_maximum( int* ptr_arr , int length ){
+  int find_maximum(  unsigned char* ptr_arr , int length ){
            /* Function implementation */
 
 
@@ -191,14 +203,14 @@ void main() {
  *
  *  Input:
  *  ======
- *  - int* 'ptr_length'  : pointer to array
+ *  -  unsigned char* 'ptr_length'  : pointer to array
  *  - int 'length'       : pointer to the array
  *
  *  Return:
  *  =======
  *  - int 'minimum' : the minimum value found within the array of integers provided
  *****************************************************************/
-  int find_minimum( int* ptr_arr , int length ){
+  int find_minimum(  unsigned char* ptr_arr , int length ){
                /* Function implementation */
 
 
@@ -215,17 +227,18 @@ void main() {
  *
  *  Input :
  *  =======
- *  - int* 'ptr_arr' : pointer to array to be sorted
+ *  -  unsigned char* 'ptr_arr' : pointer to array to be sorted
  *  - int 'length'   : the length of the array to be sorted
  *
  *  Return:
  *  =======
- *  - int* 'pointer to new sorted array'
+ *  -  unsigned char* 'pointer to new sorted array'
  *************************************************/
-int* sort_array( int* ptr_arr , int length ){
+ unsigned char* sort_array(  unsigned char* ptr_arr , int length ){
                /* Function implementation */
     //presenting the number set after sorting from the greatest to the smallest value:
     //=================================================================================
+    int i , j ;
     printf("The array after sorting from the greatest element to the smallest will be as follows : ");
     for( i = 0 ; i < 40 ; i++ ){
         printf("\n");

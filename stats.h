@@ -24,7 +24,12 @@
  * -----------------------------------------------------
  *  Description:
  *  ============
- *  This function simply prints the calculated statistics to the command line
+ *  This function simply prints the calculated statistics to the command line of a given array of unsigned chars
+ *
+ *  Inputs:
+ *  =======
+ *  - unsigned char* 'ptr_arr' : pointer to array
+ * - int 'length' : length of the array provided
  *
  *  ----------------------------------------------------
  *  2- print_array() :
@@ -35,7 +40,7 @@
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int  'length'  : length of the array
  *
  *  ----------------------------------------------------
@@ -47,7 +52,7 @@
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int 'length'  : length of the array
  *
  *  Return:
@@ -63,7 +68,7 @@
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  - unsigned char* 'ptr_arr' : pointer to array
  *  - int 'length'   : length of the array
  *
  *  Return :
@@ -79,7 +84,7 @@
  *
  *  Input :
  *  =======
- *  - int* 'ptr_length' : pointer to array
+ *  - unsigned char* 'ptr_length' : pointer to array
  *  - int 'length'      : length of the array
  *
  *  Return:
@@ -95,7 +100,7 @@
  *
  *  Input:
  *  ======
- *  - int* 'ptr_length'  : pointer to array
+ *  - unsigned char* 'ptr_length'  : pointer to array
  *  - int 'length'       : pointer to the array
  *
  *  Return:
@@ -111,12 +116,12 @@
  *
  *  Input :
  *  =======
- *  - int* 'ptr_arr' : pointer to array to be sorted
+ *  - unsigned char* 'ptr_arr' : pointer to array to be sorted
  *  - int 'length'   : the length of the array to be sorted
  *
  *  Return:
  *  =======
- *  - int* 'pointer to new sorted array'
+ *  - unsigned char* 'pointer to new sorted array'
  *
  *
  *****************************************************************************************************/
@@ -132,9 +137,14 @@
  * -----------------------------------------------------
  *  Description:
  *  ============
- *  This function simply prints the calculated statistics to the command line
+ *  This function simply prints the calculated statistics to the command line of a given array of unsigned chars
+ *
+ *  Inputs:
+ *  =======
+ *  - unsigned char* 'ptr_arr' : pointer to array
+ * - int 'length' : length of the array provided
  ********************************************************/
- void print_statistics(void);
+ void print_statistics( unsigned char* ptr_arr, int length );
 
 
 
@@ -147,10 +157,10 @@
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int  'length'  : length of the array
  *********************************************************/
- void print_array( int* ptr_arr , int length );
+ void print_array( unsigned char* ptr_arr , int length );
 
  /********************************************************
  *  3- find_median() :
@@ -161,7 +171,7 @@
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int 'length'  : length of the array
  *
  *  Return:
@@ -169,7 +179,7 @@
  *  - int 'median' : the value of the calculated median
  **********************************************************/
 
- int find_median( int* ptr_arr , int length );
+ int find_median( unsigned char* ptr_arr , int length );
 
  /**********************************************************
  *  4- find_mean() :
@@ -180,14 +190,14 @@
  *
  *  Inputs:
  *  =======
- *  - int* 'ptr_arr' : pointer to array
+ *  -  unsigned char* 'ptr_arr' : pointer to array
  *  - int 'length'   : length of the array
  *
  *  Return :
  *  ==========
  *  - int 'mean' : the value of the calculated mean
  ************************************************************/
- int find_mean( int* ptr_arr , int length );
+ int find_mean( unsigned char* ptr_arr , int length );
 
  /************************************************************
  *  5- find_maximum() :
@@ -198,14 +208,14 @@
  *
  *  Input :
  *  =======
- *  - int* 'ptr_length' : pointer to array
+ *  -  unsigned char* 'ptr_length' : pointer to array
  *  - int 'length'      : length of the array
  *
  *  Return:
  *  =======
  *  - int 'maximum' : the maximum value found within  the array of integers provided
  ******************************************************************/
-  int find_maximum( int* ptr_arr , int length );
+  int find_maximum( unsigned char* ptr_arr , int length );
 
 
  /*****************************************************************
@@ -217,14 +227,14 @@
  *
  *  Input:
  *  ======
- *  - int* 'ptr_length'  : pointer to array
+ *  -  unsigned char* 'ptr_length'  : pointer to array
  *  - int 'length'       : pointer to the array
  *
  *  Return:
  *  =======
  *  - int 'minimum' : the minimum value found within the array of integers provided
  *****************************************************************/
-  int find_minimum( int* ptr_arr , int length );
+  int find_minimum( unsigned char* ptr_arr , int length );
 
  /************************************************
  *  7- sort_array() :
@@ -235,18 +245,18 @@
  *
  *  Input :
  *  =======
- *  - int* 'ptr_arr' : pointer to array to be sorted
+ *  -  unsigned char* 'ptr_arr' : pointer to array to be sorted
  *  - int 'length'   : the length of the array to be sorted
  *
  *  Return:
  *  =======
- *  - int* 'pointer to new sorted array'
+ *  -  unsigned char* 'pointer to new sorted array'
  *************************************************/
-int* sort_array( int* ptr_arr , int length );
+unsigned char* sort_array( unsigned char* ptr_arr , int length );
 
 
 
 
 
 
-#endif /* __STATS_H__ *
+#endif /* __STATS_H__ */
