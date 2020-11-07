@@ -123,6 +123,20 @@
  *  =======
  *  - unsigned char* 'pointer to new sorted array'
  *
+ *  -----------------------------------------------------
+ *  8- swap_two_elements() :
+ *  -----------------------------------------------------
+ *  Description :
+ *  =============
+ *  This function swaps the index of two numbers in an array
+ *
+ *  Input :
+ *  =======
+ *  - unsigned char* 'element_1' : first element
+ *  - unsigned char* 'element_2' : second element
+ *
+ *
+ *
  *
  *****************************************************************************************************/
 #ifndef __STATS_H__
@@ -245,16 +259,29 @@
  *
  *  Input :
  *  =======
- *  -  unsigned char* 'ptr_arr' : pointer to array to be sorted
+ *  - unsigned char* 'ptr_arr_original' : pointer to array to be sorted
+ *  - unsigned char* 'ptr_arr_sorted_copy' : pointer to a sorted copy of the array
  *  - int 'length'   : the length of the array to be sorted
  *
- *  Return:
- *  =======
- *  -  unsigned char* 'pointer to new sorted array'
+ *
  *************************************************/
-unsigned char* sort_array( unsigned char* ptr_arr , int length );
+void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorted_copy , int length );
 
-
+ /************************************************
+ *  8- swap_two_elements() :
+ *  -----------------------------------------------------
+ *  Description :
+ *  =============
+ *  This function swaps the index of two numbers in an array
+ *
+ *  Input :
+ *  =======
+ *  - unsigned char* 'element_1' : first element
+ *  - unsigned char* 'element_2' : second element
+ *
+ *
+ *************************************************/
+void swap_two_elements( unsigned char* arr_to_be_sorted , int target_index );
 
 
 

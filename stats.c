@@ -34,6 +34,9 @@
 /* Size of the Data Set */
 #define SIZE (40)
 
+
+
+
 void main() {
 
 // The provided set of numbers to calculate the statics needed for this set provided by an array of unsigned chars :
@@ -43,6 +46,19 @@ void main() {
                               200, 122, 150, 90,   92,  87, 177, 244,
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
+
+  //unsigned char ptr_arr_sorted[SIZE]; // a new array with sorted set of numbers
+
+  // Presenting the number set provided after sorting :
+  //===================================================================
+
+  // Creating a new copy of the array to be sorted :
+  //================================================
+  unsigned char ptr_arr_sorted[SIZE];
+
+  // Sort the new copy of the array using sort_array() function :
+  //=============================================================
+  sort_array( test , ptr_arr_sorted , SIZE );
 
   /* Other Variable Declarations Go Here */
   int i,j;  // initiating these two variables to act as counters in the for loops used
@@ -56,14 +72,20 @@ void main() {
 
   //showing the results of the analysis for this number set provided :
   //===================================================================
-  print_statistics( test , SIZE );
 
-  // Presenting the number set provided after sorting :
-  //===================================================================
-  sort_array(  test , SIZE );
+  print_statistics( ptr_arr_sorted , SIZE );
 
 
-
+  //presenting the number set after sorting from the greatest to the smallest value:
+  //=================================================================================
+  printf( "The array after sorting from the greatest element\nto the smallest will be as follows : " );
+  printf( "\n====================================\n" );
+  for( i = 0 ; i < SIZE ; i+=5 ){
+        printf( "\n" );
+        for( j = 0 ; j < 5 ; j++ ){
+            printf( "%d \t" , ptr_arr_sorted[ i + j ] );
+        }
+  }
 }
 
 /*Definitions of Functions and Comments here */
@@ -88,10 +110,10 @@ void main() {
      //showing the results of the analysis for this number set provided :
      //===================================================================
      printf("\n\n");
-     printf("The maximum value of this set is : %d\n\n", find_maximum( ptr_arr , SIZE ) );
-     printf("The minimum value of this set is : %d\n\n", find_minimum( ptr_arr , SIZE ) );
-     printf("The mean value of this set is : %d\n\n", find_mean(  ptr_arr , SIZE ) );
-     printf("The median value of this set is : %d\n\n", find_median(  ptr_arr , SIZE ) );
+     printf("The maximum value of this set is : %d\n\n", find_maximum( ptr_arr , length ) );
+     printf("The minimum value of this set is : %d\n\n", find_minimum( ptr_arr , length ) );
+     printf("The mean value of this set is : %d\n\n", find_mean(  ptr_arr , length ) );
+     printf("The median value of this set is : %d\n\n", find_median(  ptr_arr , length ) );
 
  }
 
@@ -115,7 +137,9 @@ void main() {
    //===================================
    int i , j ; //
    printf("The input array of 40 integers is as follows : ");
-   for( i = 0 ; i < SIZE ; i+=5 ){
+   printf( "\n==============================================\n" );
+
+   for( i = 0 ; i < length ; i+=5 ){
         printf("\n");
         for( j = 0 ; j < 5 ; j++ ){
                 printf("%d \t ", ptr_arr[i+j]);
@@ -180,7 +204,7 @@ void main() {
  *
  *  Input :
  *  =======
- *  -  unsigned char* 'ptr_length' : pointer to array
+ *  - unsigned char* 'ptr_length' : pointer to array
  *  - int 'length'      : length of the array
  *
  *  Return:
@@ -227,26 +251,56 @@ void main() {
  *
  *  Input :
  *  =======
- *  -  unsigned char* 'ptr_arr' : pointer to array to be sorted
+ *  - unsigned char* 'ptr_arr_original' : pointer to array to be sorted
+ *  - unsigned char* 'ptr_arr_sorted_copy' : pointer to a sorted copy of the array
  *  - int 'length'   : the length of the array to be sorted
  *
- *  Return:
- *  =======
- *  -  unsigned char* 'pointer to new sorted array'
+ *
  *************************************************/
- unsigned char* sort_array(  unsigned char* ptr_arr , int length ){
-               /* Function implementation */
-    //presenting the number set after sorting from the greatest to the smallest value:
-    //=================================================================================
-    int i , j ;
-    printf("The array after sorting from the greatest element to the smallest will be as follows : ");
-    for( i = 0 ; i < 40 ; i++ ){
-        printf("\n");
-        for( j = 0 ; j < 5 ; j++ ){
-        printf("%d ", ptr_arr[i]);
-        }
+ void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorted_copy , int length ){
+     /* Function implementation */
+
+    int i , j ; // two vairables declared as counters to be used in the following for loops in this function
+
+    //getting a copy of the number set in order to keep the original set unsorted as it is :
+    //======================================================================================
+    for( i = 0 ; i < length ; i++ ){
+	    ptr_arr_sorted_copy[i] = ptr_arr_original[i];
     }
+
+    //Using the bubble sorting technique :
+    //====================================
+
+    for( i = SIZE - 1 ; i >= 1  ; i-- ){
+	    for( j = 0 ; j < i ; j++ ){
+		    if( ptr_arr_sorted_copy[j] < ptr_arr_sorted_copy[j+1] ){
+			    swap_two_elements( ptr_arr_sorted_copy , j );
+		    }
+	    }
+    }
+
+    return ptr_arr_sorted_copy;
 }
 
+ /************************************************
+ *  8- swap_two_elements() :
+ *  -----------------------------------------------------
+ *  Description :
+ *  =============
+ *  This function swaps the index of two numbers in an array
+ *
+ *  Input :
+ *  =======
+ *  - unsigned char* 'element_1' : first element
+ *  - unsigned char* 'element_2' : second element
+ *
+ *
+ *************************************************/
+void swap_two_elements( unsigned char* arr_to_be_sorted , int target_index ){
+
+    arr_to_be_sorted[target_index]     = arr_to_be_sorted[target_index] ^ arr_to_be_sorted[target_index + 1] ;
+    arr_to_be_sorted[target_index + 1] = arr_to_be_sorted[target_index] ^ arr_to_be_sorted[target_index + 1] ;
+    arr_to_be_sorted[target_index]     = arr_to_be_sorted[target_index] ^ arr_to_be_sorted[target_index + 1] ;
+}
 
 
