@@ -1,4 +1,3 @@
-
 /*********************************************************************************
  * Copyright (C) 2017 by Alex Fosdick - University of Colorado
  *
@@ -47,11 +46,6 @@ void main() {
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  //unsigned char ptr_arr_sorted[SIZE]; // a new array with sorted set of numbers
-
-  // Presenting the number set provided after sorting :
-  //===================================================================
-
   // Creating a new copy of the array to be sorted :
   //================================================
   unsigned char ptr_arr_sorted[SIZE];
@@ -88,9 +82,7 @@ void main() {
   }
 }
 
-/*Definitions of Functions and Comments here */
-
-
+                                         /*Definitions of Functions and Comments here */
 
  /******************************************************
  * 1- print_statistics() :
@@ -128,7 +120,7 @@ void main() {
  *
  *  Inputs:
  *  =======
- *  -  unsigned char* 'ptr_arr' : pointer to array
+ *  - unsigned char* 'ptr_arr' : pointer to array
  *  - int  'length'  : length of the array
  *********************************************************/
  void print_array( unsigned char* ptr_arr , int length ){
@@ -145,7 +137,6 @@ void main() {
                 printf("%d \t ", ptr_arr[i+j]);
         }
    }
-
  }
 
  /********************************************************
@@ -168,9 +159,16 @@ void main() {
  int find_median(  unsigned char* ptr_arr , int length ){
         /* Function implementation */
 
+    //Calculate the median value of the set of numbers given:
+    //=======================================================
 
-
-
+    //Check if the count of the numbers is odd :
+    //==========================================
+    if( ( length % 2 ) != 0 )
+        return ( ptr_arr[ ( length / 2 ) + 1 ] ) ;
+    else if( ( length % 2 ) == 0 ){
+        return ( ( ptr_arr[ length / 2 ] + ptr_arr [ ( length / 2 ) + 1 ]  ) / 2 ) ;
+    }
  }
 
  /**********************************************************
@@ -189,10 +187,22 @@ void main() {
  *  ==========
  *  - int 'mean' : the value of the calculated mean
  ************************************************************/
- int find_mean(  unsigned char* ptr_arr , int length ){
+
+int find_mean(  unsigned char* ptr_arr , int length ){
            /* Function implementation */
+        long int sum = 0 , i ;
+        for( i = 0 ; i < length ; i++ ){
+                sum += ptr_arr[i];
+        }
 
+        //The mean is calculated as follows : sum / count of numbers given in the array:
+        //==============================================================================
 
+        //Protection :
+        //==================
+        if( length == 0 )
+            length = 1 ;
+        return ( sum / length );
  }
 
  /************************************************************
@@ -211,10 +221,10 @@ void main() {
  *  =======
  *  - int 'maximum' : the maximum value found within  the array of integers provided
  ******************************************************************/
+
   int find_maximum(  unsigned char* ptr_arr , int length ){
            /* Function implementation */
-
-
+        return ptr_arr[0];
   }
 
 
@@ -234,12 +244,10 @@ void main() {
  *  =======
  *  - int 'minimum' : the minimum value found within the array of integers provided
  *****************************************************************/
+
   int find_minimum(  unsigned char* ptr_arr , int length ){
                /* Function implementation */
-
-
-
-
+        return ptr_arr[length - 1];
   }
 
  /************************************************
@@ -257,7 +265,8 @@ void main() {
  *
  *
  *************************************************/
- void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorted_copy , int length ){
+
+    void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorted_copy , int length ){
      /* Function implementation */
 
     int i , j ; // two vairables declared as counters to be used in the following for loops in this function
