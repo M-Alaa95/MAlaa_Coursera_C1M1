@@ -25,64 +25,63 @@
  *
  */
 
-
-
 #include <stdio.h>
 #include "stats.h"
 
 /* Size of the Data Set */
 #define SIZE (40)
 
+void main()
+{
 
-
-
-void main() {
-
-// The provided set of numbers to calculate the statics needed for this set provided by an array of unsigned chars :
-//==================================================================================================================
+/* The provided set of numbers to calculate the statics needed for this set provided by an array of unsigned chars :
+  ==================================================================================================================*/
   unsigned char test[SIZE] = { 34, 201, 190, 154,   8, 194,   2,   6,
                               114, 88,   45,  76, 123,  87,  25,  23,
                               200, 122, 150, 90,   92,  87, 177, 244,
                               201,   6,  12,  60,   8,   2,   5,  67,
                                 7,  87, 250, 230,  99,   3, 100,  90};
 
-  // Creating a new copy of the array to be sorted :
-  //================================================
+  /* Creating a new copy of the array to be sorted :
+    ================================================*/
   unsigned char ptr_arr_sorted[SIZE];
 
-  // Sort the new copy of the array using sort_array() function :
-  //=============================================================
+  /* Sort the new copy of the array using sort_array() function :
+    =============================================================*/
   sort_array( test , ptr_arr_sorted , SIZE );
 
   /* Other Variable Declarations Go Here */
+  /*=====================================*/
   int i,j;  // initiating these two variables to act as counters in the for loops used
 
-
   /* Statistics and Printing Functions Go Here */
-  //presenting the number set provided:
-  //===================================
+  /*presenting the number set provided:
+    ===================================*/
   print_array( test , SIZE );
 
 
-  //showing the results of the analysis for this number set provided :
-  //===================================================================
+  /*showing the results of the analysis for this number set provided :
+    ===================================================================*/
 
   print_statistics( ptr_arr_sorted , SIZE );
 
 
-  //presenting the number set after sorting from the greatest to the smallest value:
-  //=================================================================================
+  /*presenting the number set after sorting from the greatest to the smallest value:
+    =================================================================================*/
   printf( "The array after sorting from the greatest element\nto the smallest will be as follows : " );
   printf( "\n====================================\n" );
-  for( i = 0 ; i < SIZE ; i+=5 ){
-        printf( "\n" );
-        for( j = 0 ; j < 5 ; j++ ){
-            printf( "%d \t" , ptr_arr_sorted[ i + j ] );
-        }
+  for( i = 0 ; i < SIZE ; i+=5 )
+  {
+      printf( "\n" );
+      for( j = 0 ; j < 5 ; j++ )
+      {
+          printf( "%d \t" , ptr_arr_sorted[ i + j ] );
+      }
   }
 }
 
                                          /*Definitions of Functions and Comments here */
+                                         /*==========================================*/
 
  /******************************************************
  * 1- print_statistics() :
@@ -96,11 +95,12 @@ void main() {
  * - unsigned char* 'ptr_arr' : pointer to array
  * - int 'length' : length of the array provided
  ********************************************************/
- void print_statistics( unsigned char* ptr_arr , int length ){
+ void print_statistics( unsigned char* ptr_arr , int length )
+ {
      /* Function implementation */
 
-     //showing the results of the analysis for this number set provided :
-     //===================================================================
+     /*showing the results of the analysis for this number set provided :
+      ===================================================================*/
      printf("\n\n");
      printf("The maximum value of this set is : %d\n\n", find_maximum( ptr_arr , length ) );
      printf("The minimum value of this set is : %d\n\n", find_minimum( ptr_arr , length ) );
@@ -108,8 +108,6 @@ void main() {
      printf("The median value of this set is : %d\n\n", find_median(  ptr_arr , length ) );
 
  }
-
-
 
  /******************************************************
  *  2- print_array() :
@@ -123,7 +121,8 @@ void main() {
  *  - unsigned char* 'ptr_arr' : pointer to array
  *  - int  'length'  : length of the array
  *********************************************************/
- void print_array( unsigned char* ptr_arr , int length ){
+ void print_array( unsigned char* ptr_arr , int length )
+ {
               /* Function implementation */
    //presenting the number set provided:
    //===================================
@@ -131,10 +130,12 @@ void main() {
    printf("The input array of 40 integers is as follows : ");
    printf( "\n==============================================\n" );
 
-   for( i = 0 ; i < length ; i+=5 ){
+   for( i = 0 ; i < length ; i+=5 )
+   {
         printf("\n");
-        for( j = 0 ; j < 5 ; j++ ){
-                printf("%d \t ", ptr_arr[i+j]);
+        for( j = 0 ; j < 5 ; j++ )
+        {
+            printf("%d \t ", ptr_arr[i+j]);
         }
    }
  }
@@ -156,19 +157,26 @@ void main() {
  *  - int 'median' : the value of the calculated median
  **********************************************************/
 
- int find_median(  unsigned char* ptr_arr , int length ){
+ int find_median(  unsigned char* ptr_arr , int length )
+ {
         /* Function implementation */
+    int result;
+    /*Calculate the median value of the set of numbers given:
+      =======================================================*/
 
-    //Calculate the median value of the set of numbers given:
-    //=======================================================
-
-    //Check if the count of the numbers is odd :
-    //==========================================
+    /*Check if the count of the numbers is odd :
+      ==========================================*/
     if( ( length % 2 ) != 0 )
-        return ( ptr_arr[ ( length / 2 ) + 1 ] ) ;
-    else if( ( length % 2 ) == 0 ){
-        return ( ( ptr_arr[ length / 2 ] + ptr_arr [ ( length / 2 ) + 1 ]  ) / 2 ) ;
+    {
+        result = ( ptr_arr[ ( length / 2 ) + 1 ] ) ;
     }
+    else if( ( length % 2 ) == 0 )
+    {
+        result =  ( ( ptr_arr[ length / 2 ] + ptr_arr [ ( length / 2 ) + 1 ]  ) / 2 ) ;
+    }
+    else{}
+
+    return result;
  }
 
  /**********************************************************
@@ -188,21 +196,29 @@ void main() {
  *  - int 'mean' : the value of the calculated mean
  ************************************************************/
 
-int find_mean(  unsigned char* ptr_arr , int length ){
+int find_mean(  unsigned char* ptr_arr , int length )
+{
            /* Function implementation */
         long int sum = 0 , i ;
-        for( i = 0 ; i < length ; i++ ){
-                sum += ptr_arr[i];
+        int result;
+        for( i = 0 ; i < length ; i++ )
+        {
+            sum += ptr_arr[i];
         }
 
-        //The mean is calculated as follows : sum / count of numbers given in the array:
-        //==============================================================================
+        /*The mean is calculated as follows : sum / count of numbers given in the array:
+          ==============================================================================*/
 
-        //Protection :
-        //==================
+        /*Protection :
+        ==============*/
         if( length == 0 )
+        {
             length = 1 ;
-        return ( sum / length );
+        }
+        else{}
+
+        result = ( sum / length );
+        return result;
  }
 
  /************************************************************
@@ -222,9 +238,12 @@ int find_mean(  unsigned char* ptr_arr , int length ){
  *  - int 'maximum' : the maximum value found within  the array of integers provided
  ******************************************************************/
 
-  int find_maximum(  unsigned char* ptr_arr , int length ){
+  int find_maximum(  unsigned char* ptr_arr , int length )
+  {
            /* Function implementation */
-        return ptr_arr[0];
+        int result;
+        result = ptr_arr[0];
+        return result;
   }
 
 
@@ -245,9 +264,12 @@ int find_mean(  unsigned char* ptr_arr , int length ){
  *  - int 'minimum' : the minimum value found within the array of integers provided
  *****************************************************************/
 
-  int find_minimum(  unsigned char* ptr_arr , int length ){
+  int find_minimum(  unsigned char* ptr_arr , int length )
+  {
                /* Function implementation */
-        return ptr_arr[length - 1];
+        int result;
+        result =  ptr_arr[length - 1];
+        return result;
   }
 
  /************************************************
@@ -266,29 +288,32 @@ int find_mean(  unsigned char* ptr_arr , int length ){
  *
  *************************************************/
 
-    void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorted_copy , int length ){
+void sort_array(  unsigned char* ptr_arr_original , unsigned char* ptr_arr_sorted_copy , int length )
+{
      /* Function implementation */
-
     int i , j ; // two vairables declared as counters to be used in the following for loops in this function
 
     //getting a copy of the number set in order to keep the original set unsorted as it is :
     //======================================================================================
-    for( i = 0 ; i < length ; i++ ){
+    for( i = 0 ; i < length ; i++ )
+    {
 	    ptr_arr_sorted_copy[i] = ptr_arr_original[i];
     }
 
-    //Using the bubble sorting technique :
-    //====================================
+    /*Using the bubble sorting technique :
+      ====================================*/
 
-    for( i = SIZE - 1 ; i >= 1  ; i-- ){
-	    for( j = 0 ; j < i ; j++ ){
-		    if( ptr_arr_sorted_copy[j] < ptr_arr_sorted_copy[j+1] ){
+    for( i = SIZE - 1 ; i >= 1  ; i-- )
+    {
+	    for( j = 0 ; j < i ; j++ )
+	    {
+		    if( ptr_arr_sorted_copy[j] < ptr_arr_sorted_copy[j+1] )
+		    {
 			    swap_two_elements( ptr_arr_sorted_copy , j );
 		    }
+		    else{}
 	    }
     }
-
-    return ptr_arr_sorted_copy;
 }
 
  /************************************************
@@ -305,8 +330,8 @@ int find_mean(  unsigned char* ptr_arr , int length ){
  *
  *
  *************************************************/
-void swap_two_elements( unsigned char* arr_to_be_sorted , int target_index ){
-
+void swap_two_elements( unsigned char* arr_to_be_sorted , int target_index )
+{
     arr_to_be_sorted[target_index]     = arr_to_be_sorted[target_index] ^ arr_to_be_sorted[target_index + 1] ;
     arr_to_be_sorted[target_index + 1] = arr_to_be_sorted[target_index] ^ arr_to_be_sorted[target_index + 1] ;
     arr_to_be_sorted[target_index]     = arr_to_be_sorted[target_index] ^ arr_to_be_sorted[target_index + 1] ;
